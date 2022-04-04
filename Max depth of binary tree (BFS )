@@ -1,0 +1,8 @@
+class Solution:
+    def maxDepth(self, R: TreeNode) -> int:
+        A, B, d = [R], [], 0
+        while A:
+            for n in A: n != None and B.extend([n.left,n.right])
+            A, B, d = B, [], d + 1
+        return d - 1
+		
