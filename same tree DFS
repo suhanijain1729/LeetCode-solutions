@@ -5,21 +5,11 @@ class Solution(object):
         :type q: TreeNode
         :rtype: bool
         """
-        pStack = []
-        qStack = []
-        while p or pStack or q or qStack:
-            while p:
-                pStack.append(p)
-                p = p.left
-            while q:
-                qStack.append(q)
-                q = q.left
-            if len(pStack) != len(qStack):
-                return False
-            pNode = pStack.pop()
-            qNode = qStack.pop()
-            if pNode.val != qNode.val:
-                return False
-            p = pNode.right
-            q = qNode.right
-        return True
+        if p==None and q==None:
+            return True
+        elif p==None or q==None:
+            return False
+        if p.val==q.val:
+            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        else:
+            return False
