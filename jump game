@@ -1,0 +1,17 @@
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        # Try to update the next pointer if it can be larger
+        # If the next pointer can reach the last element, return True
+        # If current pointer is more than the next pointer, return False
+        
+        curr_ptr, next_ptr = 0, 0
+        
+        while(curr_ptr <= next_ptr):
+            next_ptr = max(curr_ptr + nums[curr_ptr], next_ptr)
+
+            if next_ptr >= len(nums) - 1:
+                return(True)
+                
+            curr_ptr += 1
+            
+        return(False)
